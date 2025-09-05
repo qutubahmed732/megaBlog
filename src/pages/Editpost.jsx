@@ -5,29 +5,29 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 function Editpost() {
 
-    const [post, setpost] = useState(null)
-    const { slug } = useParams()
-    const navigate = useNavigate()
+  const [post, setpost] = useState(null)
+  const { slug } = useParams()
+  const navigate = useNavigate()
 
-    useEffect(() => {
-        if (slug) {
-            services.getPost(slug).then((post) => {
-                if (post) {
-                    setpost(post)
-                }
-            })
-        } else {
-            navigate("/")
+  useEffect(() => {
+    if (slug) {
+      services.getPost(slug).then((post) => {
+        if (post) {
+          setpost(post)
         }
-    }, [])
+      })
+    } else {
+      navigate("/")
+    }
+  }, [])
 
-    return post ? (
-        <div className='py-8 '>
-            <Container>
-                <PostForm post={post} />
-            </Container>
-        </div>
-    ) : null
+  return post ? (
+    <div className='py-8 '>
+      <Container>
+        <PostForm post={post} />
+      </Container>
+    </div>
+  ) : null
 }
 
 export default Editpost

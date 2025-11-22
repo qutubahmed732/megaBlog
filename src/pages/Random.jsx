@@ -38,11 +38,13 @@ function Random() {
 
     return (
       <div className='flex-1'>
-        {posts.map(post => (
-          <div className='p-2 w-full' key={post.$id}>
-            <Postcard {...post} />
-          </div>
-        ))}
+        <div className='grid grid-cols-3 gap-3'>
+          {posts.map(post => (
+            <div className='p-2 w-full' key={post.$id}>
+              <Postcard {...post} />
+            </div>
+          ))}
+        </div>
       </div>
     )
   }

@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("./Libre_Baskerville//static//LibreBaskerville-Bold.ttf");
+  font-weight: bolder;
+  font-style: normal;
+}

@@ -1,9 +1,10 @@
 import React from 'react'
 
+
 function Logo({width, className}) {
     return (
-        <div className={className}>
-            Logo
+        <div className={className} style={{fontFamily:"MyCustomFont"}}>
+            BlogHouse
         </div>
     )
 }

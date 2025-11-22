@@ -8,7 +8,7 @@ import Random from './pages/Random.jsx'
 
 import { Home, ProtectedLayer, Login, Signup, AllPosts, Addpost, Editpost, Post } from "./components/index.js"
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,7 +75,8 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
 
     <Provider store={store}>
-      <RouterProvider router={router} />
+      {/* <RouterProvider router={router} /> */}
+      {RouterProvider({router})}
     </Provider>
 
   </StrictMode>

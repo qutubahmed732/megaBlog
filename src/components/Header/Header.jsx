@@ -5,9 +5,11 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import authService from '../../appwrite/auth.js';
 
+
 function Header() {
 
   const [name, setName] = React.useState("");
+  const [open, setOpen] = React.useState(false);
 
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
@@ -15,12 +17,16 @@ function Header() {
   React.useEffect(() => {
     const fetchUser = async () => {
       let user = await authService.getCurrentUser();
-      setName(user.name)
+      if(authStatus){
+        setName(user.name)
+      }else {
+        setName("")
+      }
       console.log(user)
     };
 
     fetchUser();
-  }, [])
+  }, [authStatus])
 
 
 
@@ -66,20 +72,39 @@ function Header() {
             {
               navItems.map((item) => (
                 item.active ? (
-                  <li key={item.name}>
+                  <li key={item.name} className='hidden md:block'>
                     <button onClick={() => navigate(item.slug)} className='inline-block px-6 py-2 duration-200 text-[#EAECEF] hover:bg-blue-100 font-[500] text-xl rounded-full border-transparent hover:border-b-2 hover:border-[#EAECEF] hover:text-neutral-500'>{item.name}</button>
                   </li>
                 ) : null
               ))
             }
             {authStatus && (
-              <li>
+              <li className='hidden md:block'>
                 <LogoutBtn />
               </li>
             )}
+            <li onClick={() => setOpen(!open)} className='inline-block md:hidden px-6 py-2 duration-200 text-[#EAECEF] hover:bg-blue-100 font-[500] text-sm md:text-xl rounded-full border-transparent hover:border-b-2 hover:border-[#EAECEF] hover:text-neutral-500'>Menu Button</li>
           </ul>
         </nav>
       </Container>
+      <div className='relative'>
+        <ul className={`w-1/2 h-screen absolute top-3 left-auto right-0  ${open ? "flex" : "hidden"} flex-col items-start gap-5 bg-green-500/60 py-5`}>
+          {
+            navItems.map((item) => (
+              item.active ? (
+                <li key={item.name}>
+                  <button onClick={() => navigate(item.slug)} className='inline-block px-6 py-2 duration-200 text-[#EAECEF] hover:bg-blue-100 font-[500] text-xl rounded-full border-transparent hover:border-b-2 hover:border-[#EAECEF] hover:text-neutral-500'>{item.name}</button>
+                </li>
+              ) : null
+            ))
+          }
+          {authStatus && (
+            <li>
+              <LogoutBtn />
+            </li>
+          )}
+        </ul>
+      </div>
     </header>
   )
 }

@@ -13,7 +13,7 @@ function Footer() {
                 <Logo width="50px" className="rounded-2xl p-4 text-2xl font-bold font-serif text-[#f3e1c8] bg-linear-to-br from-emerald-700 to-green-700 cursor-pointer" />
               </Link>
               <div>
-                <p className="text-xl bg-linear-to-l to-emerald-100 from-orange-500 bg-clip-text text-transparent">
+                <p className="hidden md:block text-xl bg-linear-to-l to-emerald-100 from-orange-500 bg-clip-text text-transparent">
                   &copy; Copyright 2023. All Rights Reserved by DevUI.
                 </p>
               </div>
@@ -133,6 +133,9 @@ function Footer() {
                 </li>
               </ul>
             </div>
+          <p className="block md:hidden text-xl bg-linear-to-l to-emerald-100 from-orange-500 bg-clip-text text-transparent">
+            &copy; Copyright 2023. All Rights Reserved by DevUI.
+          </p>
           </div>
         </div>
       </div>

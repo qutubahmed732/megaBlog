@@ -38,7 +38,7 @@ function Random() {
 
     return (
       <div className='flex-1'>
-        <div className='grid grid-cols-3 gap-3'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-3'>
           {posts.map(post => (
             <div className='p-2 w-full' key={post.$id}>
               <Postcard {...post} />

@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { Provider } from 'react-redux'
-import store from './store/store.js';
+import store from './Redux-store/store.js';
 import Random from './pages/Random.jsx'
 
-import { Home, ProtectedLayer, Login, Signup, AllPosts, Addpost, Editpost, Post } from "./components/index.js"
+import { Home, ProtectedLayer, Login, Signup, AllPosts, Addpost, Editpost, Post } from "./Interface/index.js"
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 const router = createBrowserRouter([
@@ -75,8 +75,8 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
 
     <Provider store={store}>
-      {/* <RouterProvider router={router} /> */}
-      {RouterProvider({router})}
+      <RouterProvider router={router} />
+      {/* {RouterProvider({router})} */}
     </Provider>
 
   </StrictMode>

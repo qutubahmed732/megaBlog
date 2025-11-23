@@ -47,7 +47,7 @@ export class AuthService {
     try {
       return await this.account.get()
     } catch (error) {
-      console.log(error, "user login check karne mai masla hai")
+      // console.log(error, "user login check karne mai masla hai")
     }
     return null;
   }

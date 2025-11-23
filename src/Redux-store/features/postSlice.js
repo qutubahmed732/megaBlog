@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import services from "../../appwrite/config";
+import services from "../../appwrite/config.js";
 
 const initialState = {
     allPosts: []

@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
-import { getPosts } from '../store/features/postSlice'
+import { getPosts } from '../Redux-store/features/postSlice.js'
 import { useSelector, useDispatch } from 'react-redux'
-import services from '../appwrite/config';
-import { Postcard } from '../components/index';
-import { Container } from '../components/index';
+import services from '../appwrite/config.js';
+import { Postcard } from '../Interface/index.js';
+import { Container } from '../Interface/index.js';
 
 function Random() {
 

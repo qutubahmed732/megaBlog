@@ -1,5 +1,5 @@
-import { Container } from "../components"
-import Random from "./Random"
+import { Container } from "../Interface/index.js";
+import Random from "./Random.jsx"
 
 function AllPosts() {
 

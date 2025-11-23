@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import services from "../appwrite/config";
-import { Button, Container } from "../components";
+import services from "../appwrite/config.js";
+import { Button, Container } from "../Interface/index.js";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
@@ -35,36 +35,45 @@ export default function Post() {
     return post ? (
         <div className="py-8 border">
             <Container>
-                <div className="flex flex-col justify-start">
-                    <div className="w-full flex justify-center mb-4 relative rounded-xl p-2">
-                        <img
-                            src={services.getFilePreview(post.featuredImage)}
-                            alt={post.title}
-                            className="rounded-xl w-full h-1/2"
-                        />
+                <div className="w-full sm:w-1/2 mx-auto border rounded-xl overflow-hidden bg-slate-900">
+
+                    {/* Image Section */}
+                    <div className="relative">
+                        <div className="w-full h-[500px]">   {/* Image height fixed */}
+                            <img
+                                width={20}
+                                height={20}
+                                src={services.getFilePreview(post.featuredImage)}
+                                alt={post.title}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+
                         {isAuthor && (
-                            <div className="absolute right-6 top-6">
+                            <div className="absolute right-4 top-4 flex gap-2">
                                 <Link to={`/edit-post/${post.$id}`}>
-                                    <Button bgColor="bg-green-500" className="mr-3">
-                                        Edit
-                                    </Button>
+                                    <Button bgColor="bg-green-500">Edit</Button>
                                 </Link>
+
                                 <Button bgColor="bg-red-500" onClick={deletePost}>
                                     Delete
                                 </Button>
                             </div>
                         )}
                     </div>
-                    <div className="text-white h-1/2">
-                        <div className="w-full mb-3">
-                            <h1 className="text-2xl font-bold">{post.title}</h1>
-                        </div>
-                        <div className="browser-css">
+
+                    {/* Content Section */}
+                    <div className="text-white p-4">
+                        <h1 className="text-xl font-bold mb-2">{post.title}</h1>
+
+                        <div className="browser-css text-sm">
                             {parse(post.content)}
                         </div>
                     </div>
+
                 </div>
             </Container>
         </div>
+
     ) : null;
 }

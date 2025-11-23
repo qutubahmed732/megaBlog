@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Logo, LogoutBtn } from "../index.js"
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import authService from '../../appwrite/auth.js';
 
 
@@ -13,20 +13,21 @@ function Header() {
 
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
+  const location = useLocation();
 
   React.useEffect(() => {
     const fetchUser = async () => {
       let user = await authService.getCurrentUser();
-      if(authStatus){
+      if (authStatus) {
         setName(user.name)
-      }else {
+      } else {
         setName("")
       }
       console.log(user)
     };
 
     fetchUser();
-  }, [authStatus])
+  }, [location.pathname, authStatus])
 
 
 
@@ -93,13 +94,13 @@ function Header() {
             navItems.map((item) => (
               item.active ? (
                 <li key={item.name}>
-                  <button onClick={() => navigate(item.slug)} className='inline-block px-6 py-2 duration-200 text-[#EAECEF] hover:bg-blue-100 font-[500] text-xl rounded-full border-transparent hover:border-b-2 hover:border-[#EAECEF] hover:text-neutral-500'>{item.name}</button>
+                  <button onClick={() => { navigate(item.slug); setOpen(!open) }} className='inline-block px-6 py-2 duration-200 text-[#EAECEF] hover:bg-blue-100 font-[500] text-xl rounded-full border-transparent hover:border-b-2 hover:border-[#EAECEF] hover:text-neutral-500'>{item.name}</button>
                 </li>
               ) : null
             ))
           }
           {authStatus && (
-            <li>
+            <li onClick={() => setOpen(!open)}>
               <LogoutBtn />
             </li>
           )}

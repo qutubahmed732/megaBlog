@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import authService from '../appwrite/auth'
+import authService from '../appwrite/auth.js'
 import { Link, useNavigate } from 'react-router-dom'
-import { loginUser } from '../store/features/authSlice'
-import { Button, Input, Logo } from "./index"
+import { loginUser } from '../Redux-store/features/authSlice.js'
+import { Button, Input, Logo } from "./index.js"
 import { useForm } from 'react-hook-form'
 
 function Signup() {

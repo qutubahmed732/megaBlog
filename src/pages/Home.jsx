@@ -1,4 +1,4 @@
-import { Container } from "../components/index"
+import { Container } from "../Interface/index.js"
 import Random from './Random.jsx'
 
 function Home() {

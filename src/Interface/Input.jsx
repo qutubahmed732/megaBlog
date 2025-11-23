@@ -15,8 +15,8 @@ function Input(
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={id} className="inline-block mb-1 pl-1">
-          {label}
+      <label htmlFor={id} className="inline-block mb-3 pl-1 text-xl md:text-3xl font-bold">
+        {label}
         </label>
       )}
       <input

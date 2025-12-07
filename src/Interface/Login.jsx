@@ -38,8 +38,8 @@ function Login() {
     >
       <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
         <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px]">
-            <Logo width="100%" />
+          <span className="inline-block w-full max-w-[200px]">
+            <Logo width="100%" className={"rounded-2xl p-4 text-2xl font-bold font-serif text-[#f3e1c8] bg-linear-to-br from-emerald-700 to-green-700 text-center"} />
           </span>
         </div>
         <h2 className="text-center text-2xl font-bold leading-tight">
